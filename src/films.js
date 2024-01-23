@@ -36,7 +36,6 @@ function orderAlphabetically(array) {
 
 // Exercise 5: Order by year, ascending
 function orderByYear(array) {
-
   let result = array.sort((a, b) => {
     if(a.year != b.year){
       return a.year - b.year;
@@ -55,9 +54,9 @@ function orderByYear(array) {
 // Exercise 6: Calculate the average of the movies in a category
 function moviesAverageByCategory(array, genre) {
   let arrayGenre = array.filter(film => film.genre.includes(genre));
-  console.log(arrayGenre);
   let sumScore = arrayGenre.reduce((total, film) => total + film.score, 0);
   let result = (sumScore/arrayGenre.length).toFixed(2);
+
   console.log("EXERCICE 6 ->", result);
   return Number(result);
   }
@@ -74,14 +73,19 @@ function hoursToMinutes(array) {
       duration: (hours * 60) + minutes,
     }
   });
-  console.log("EXERCICE 7 ->",result);
-  return result;
+
+    console.log("EXERCICE 7 ->",result);
+    return result;
 };
 
 //NIVEL3
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {
-  
+function bestFilmOfYear(array, year) {
+  let result = array.filter(film => film.year === year)
+    .reduce((previous, current) => current.score > previous.score ? current : previous);
+    
+    console.log("EXERCICE 8 ->", result);
+    return [result];
 }
 
 
